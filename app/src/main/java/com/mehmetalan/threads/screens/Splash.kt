@@ -27,7 +27,7 @@ fun Splash(
         val (image) = createRefs()
 
         Image(
-            painter = painterResource(id = R.drawable.twitter),
+            painter = painterResource(id = R.drawable.threads),
             contentDescription = "Logo",
             modifier = Modifier
                 .constrainAs(image) {
