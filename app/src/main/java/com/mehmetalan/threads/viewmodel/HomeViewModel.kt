@@ -1,7 +1,5 @@
 package com.mehmetalan.threads.viewmodel
 
-import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,13 +7,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.firestore.auth.User
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.ktx.storage
 import com.mehmetalan.threads.model.ThreadModel
 import com.mehmetalan.threads.model.UserModel
-import com.mehmetalan.threads.utils.SharePreferences
-import java.util.UUID
 
 class HomeViewModel : ViewModel() {
 

@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -27,6 +28,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
 import com.google.firebase.auth.FirebaseAuth
+import com.mehmetalan.threads.R
 import com.mehmetalan.threads.item_view.ThreadItem
 import com.mehmetalan.threads.model.UserModel
 import com.mehmetalan.threads.navigation.Routes
@@ -106,7 +108,7 @@ fun OtherUsers(
                         .size(120.dp)
                         .clip(shape = CircleShape)
                         .clickable {
-                                   val encodedUrl = Uri.encode(users!!.imageUrl)
+                            val encodedUrl = Uri.encode(users!!.imageUrl)
                             val route = "fullScreenProfileImage/${encodedUrl}"
                             navController.navigate(route)
                         },
@@ -181,9 +183,9 @@ fun OtherUsers(
                     ) {
                         Text(
                             text = if (followerList != null && followerList!!.contains(currentUserId)) {
-                                "Following"
+                                stringResource(id = R.string.unfollow)
                             } else {
-                                "Follow"
+                                stringResource(id = R.string.follow)
                             }
                         )
                     }

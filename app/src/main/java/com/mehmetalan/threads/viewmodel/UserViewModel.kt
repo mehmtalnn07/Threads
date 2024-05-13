@@ -13,7 +13,6 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mehmetalan.threads.model.ThreadModel
 import com.mehmetalan.threads.model.UserModel
-import java.util.UUID
 
 class UserViewModel : ViewModel() {
 
@@ -92,8 +91,8 @@ class UserViewModel : ViewModel() {
             .addSnapshotListener { value, error ->
                 val followerIds = value?.get("followerIds") as? List<String>?: listOf()
                 _followerList.postValue(followerIds)
-                if (followerIds.isNotEmpty()) {  // Eğer takipçi kimlikleri varsa
-                    fetchUserDetails(followerIds)  // Kullanıcı detaylarını al
+                if (followerIds.isNotEmpty()) {
+                    fetchUserDetails(followerIds)
                 }
             }
     }
@@ -114,7 +113,7 @@ class UserViewModel : ViewModel() {
     fun fetchUserDetails(userIds: List<String>) {
         val userDetails = mutableListOf<UserModel>()
         for (id in userIds) {
-            realtimeDb.getReference("users").child(id)  // "users" koleksiyonundan belirli bir kullanıcıyı al
+            realtimeDb.getReference("users").child(id)
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onDataChange(dataSnapshot: DataSnapshot) {
                         val user = dataSnapshot.getValue(UserModel::class.java)

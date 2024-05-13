@@ -24,6 +24,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -33,6 +34,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.mehmetalan.threads.R
 import com.mehmetalan.threads.navigation.Routes
 import com.mehmetalan.threads.viewmodel.AuthViewModel
 
@@ -75,7 +77,7 @@ fun Login(
     ) {
 
         Text(
-            text = "Login",
+            text = stringResource(id = R.string.login),
             fontWeight = FontWeight.ExtraBold,
             fontSize = 24.sp
         )
@@ -90,7 +92,7 @@ fun Login(
             onValueChange = { email = it },
             label = {
                 Text(
-                    text = "Email"
+                    text = stringResource(id = R.string.email)
                 )
             },
             keyboardOptions = KeyboardOptions(
@@ -113,7 +115,7 @@ fun Login(
             onValueChange = { password = it },
             label = {
                 Text(
-                    text = "Password"
+                    text = stringResource(id = R.string.password)
                 )
             },
             keyboardOptions = KeyboardOptions(
@@ -143,7 +145,7 @@ fun Login(
                 .fillMaxWidth()
         ) {
             Text(
-                text = "Login",
+                text = stringResource(id = R.string.login),
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
                 modifier = Modifier
@@ -160,7 +162,7 @@ fun Login(
             }
         ) {
             Text(
-                text = "New User? Create Account",
+                text = stringResource(id = R.string.new_user),
                 fontSize = 16.sp
             )
         }

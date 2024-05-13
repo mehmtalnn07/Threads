@@ -1,9 +1,5 @@
 package com.mehmetalan.threads.navigation
 
-import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.composable
-import com.mehmetalan.threads.screens.FullScreenImage
 
 sealed class Routes(
     val routes: String
@@ -21,5 +17,4 @@ sealed class Routes(
     object OtherUsers: Routes(routes = "otherUsers/{data}")
     object FollowersScreen: Routes(routes = "followersScreen")
     object FollowingsScreen: Routes(routes = "followingsScreen")
-    object ThreadsDetailsScreen: Routes(routes = "")
 }

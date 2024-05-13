@@ -1,22 +1,12 @@
 package com.mehmetalan.threads.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.mehmetalan.threads.model.UserModel
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
-import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
 class ThreadItemViewModel : ViewModel() {
-
-
-    private val db = FirebaseDatabase.getInstance()
 
     fun epochToFormattedTime(epochString: String): String {
         val epochLong = epochString.toLongOrNull()

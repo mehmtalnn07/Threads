@@ -16,7 +16,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
-import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -44,7 +43,7 @@ fun FollowingsScreen(
     val userViewModel: UserViewModel = viewModel()
 
     LaunchedEffect(userId) {
-        userViewModel.getFollowing(userId) // Takipçileri alır
+        userViewModel.getFollowing(userId)
     }
 
     val userDetailsList by userViewModel.userDetailsList.observeAsState(emptyList())
@@ -58,7 +57,7 @@ fun FollowingsScreen(
             UserCard(
                 user,
                 navController
-            ) // Kullanıcı detaylarını gösterir
+            )
         }
     }
 }
@@ -85,13 +84,12 @@ private fun UserCard(
                     contentDescription = "${user.name}'s profile picture",
                     modifier = Modifier
                         .size(48.dp)
-                        .clip(CircleShape),  // Yuvarlak profil resmi
+                        .clip(CircleShape),
                     contentScale = ContentScale.Crop
                 )
 
                 Spacer(modifier = Modifier.width(16.dp))
 
-                // Kullanıcı adı ve kullanıcı adı
                 Column {
                     Text(text = user.name, fontSize = 18.sp)
                     Text(text = "@${user.userName}", style = MaterialTheme.typography.bodySmall)

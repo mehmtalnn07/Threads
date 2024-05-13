@@ -168,8 +168,6 @@ fun LikeButton(
     val firestoreDb = FirebaseFirestore.getInstance()
     var isLiked by remember { mutableStateOf(false) }
     var likeCount by remember { mutableStateOf(0) }
-
-    // İlk yüklemede beğenme durumunu kontrol edin
     LaunchedEffect(threadId) {
         val likeDoc = firestoreDb.collection("likeThreads").document(threadId)
         val data = likeDoc.get().await()

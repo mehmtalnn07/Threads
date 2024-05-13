@@ -5,19 +5,12 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
-import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
 import com.mehmetalan.threads.model.ThreadModel
-import com.mehmetalan.threads.model.UserModel
-import com.mehmetalan.threads.utils.SharePreferences
 import java.util.UUID
 
 class AddThreadViewModel : ViewModel() {
@@ -63,11 +56,9 @@ class AddThreadViewModel : ViewModel() {
         userReference.child(threadId).setValue(threadData)
             .addOnSuccessListener {
                 _isPosted.postValue(true)
-
-                // Firestore'da "likeThreads" koleksiyonunda başlık için başlangıç belgesi oluşturun
                 val likeData = hashMapOf(
-                    "likeCount" to 0,  // Başlangıç beğeni sayısı
-                    "likedBy" to emptyList<String>()  // Başlangıç beğenen kullanıcılar listesi
+                    "likeCount" to 0,
+                    "likedBy" to emptyList<String>()
                 )
 
                 firestoreDb.collection("likeThreads").document(threadId).set(likeData, SetOptions.merge())

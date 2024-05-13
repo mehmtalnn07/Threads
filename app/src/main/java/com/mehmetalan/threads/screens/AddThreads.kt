@@ -38,6 +38,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -119,7 +120,7 @@ fun AddThreads(
         )
 
         Text(
-            text = "Add Threads",
+            text = stringResource(id = R.string.add_threads),
             fontWeight = FontWeight.ExtraBold,
             fontSize = 24.sp,
             modifier = Modifier
@@ -158,7 +159,7 @@ fun AddThreads(
         )
 
         BasicTextFieldWithHint(
-            hint = "Start a thread...",
+            hint = stringResource(id = R.string.text_field_hint),
             value = thread,
             onValueChange = { thread = it },
             modifier = Modifier
@@ -226,7 +227,7 @@ fun AddThreads(
         }
 
         Text(
-            text = "Anyone can reply",
+            text = stringResource(id = R.string.anyone_can_reply),
             fontSize = 20.sp,
             modifier = Modifier
                 .constrainAs(replyText) {
@@ -250,7 +251,7 @@ fun AddThreads(
                 }
         ) {
             Text(
-                text = "Post",
+                text = stringResource(id = R.string.post),
                 fontSize = 20.sp,
             )
         }

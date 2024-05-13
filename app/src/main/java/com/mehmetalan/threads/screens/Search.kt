@@ -21,7 +21,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -29,8 +29,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
+import com.mehmetalan.threads.R
 import com.mehmetalan.threads.item_view.UserItem
-import com.mehmetalan.threads.viewmodel.HomeViewModel
 import com.mehmetalan.threads.viewmodel.SearchViewModel
 
 @Composable
@@ -45,7 +45,7 @@ fun Search(
     Column {
 
         Text(
-            text = "Search",
+            text = stringResource(id = R.string.search),
             fontWeight = FontWeight.ExtraBold,
             fontSize = 24.sp,
             modifier = Modifier
@@ -56,7 +56,7 @@ fun Search(
             onValueChange = { search = it },
             label = {
                 Text(
-                    text = "Search User"
+                    text = stringResource(id = R.string.search_user)
                 )
             },
             keyboardOptions = KeyboardOptions(

@@ -42,20 +42,4 @@ class SearchViewModel : ViewModel() {
 
     }
 
-    fun fetchUserFromThread(thread: ThreadModel, onResult: (UserModel) -> Unit) {
-
-        db.getReference("users").child(thread.userId)
-            .addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val user = snapshot.getValue(UserModel::class.java)
-                    user?.let(onResult)
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-
-                }
-            })
-
-    }
-
 }

@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Threads</string>
+    <string name="add_threads">Thread Ekle</string>
+    <string name="text_field_hint">Bir konu başlat...</string>
+    <string name="anyone_can_reply">Herkes cevap verebilir</string>
+    <string name="post">Gönder</string>
+    <string name="edit">Düzenle</string>
+    <string name="take_photo">Fotoğraf çek</string>
+    <string name="choose_photo">Mevcut fotoğraflardan seç</string>
+    <string name="login">Giriş yap</string>
+    <string name="email">E-posta</string>
+    <string name="password">Parola</string>
+    <string name="new_user">Yeni kullanıcı mısın? Hesabını oluştur</string>
+    <string name="unfollow">Takipten çıkar</string>
+    <string name="follow">Takip et</string>
+    <string name="logout">Çıkış yap</string>
+    <string name="register">Buradan kayıt ol</string>
+    <string name="name">İsim</string>
+    <string name="user_name">Kullanıcı adı</string>
+    <string name="bio">Hakkında</string>
+    <string name="current_user">Zaten bir hesabın var mı? Buradan giriş yap</string>
+    <string name="search">Ara</string>
+    <string name="search_user">Kullanıcı ara</string>
+    
 </resources>

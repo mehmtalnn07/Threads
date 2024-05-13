@@ -1,7 +1,6 @@
 package com.mehmetalan.threads.screens
 
 import android.Manifest
-import android.app.Activity
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
@@ -40,6 +39,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -116,7 +116,7 @@ fun Register(
     ) {
 
         Text(
-            text = "Register Here",
+            text = stringResource(id = R.string.register),
             fontWeight = FontWeight.ExtraBold,
             fontSize = 24.sp
         )
@@ -154,7 +154,7 @@ fun Register(
             onValueChange = { name = it },
             label = {
                 Text(
-                    text = "Name"
+                    text = stringResource(id = R.string.name)
                 )
             },
             keyboardOptions = KeyboardOptions(
@@ -171,7 +171,7 @@ fun Register(
             onValueChange = { userName = it },
             label = {
                 Text(
-                    text = "User Name"
+                    text = stringResource(id = R.string.user_name)
                 )
             },
             keyboardOptions = KeyboardOptions(
@@ -188,7 +188,7 @@ fun Register(
             onValueChange = { bio = it },
             label = {
                 Text(
-                    text = "Bio"
+                    text = stringResource(id = R.string.bio)
                 )
             },
             keyboardOptions = KeyboardOptions(
@@ -205,7 +205,7 @@ fun Register(
             onValueChange = { email = it },
             label = {
                 Text(
-                    text = "Email"
+                    text = stringResource(id = R.string.email)
                 )
             },
             keyboardOptions = KeyboardOptions(
@@ -223,7 +223,7 @@ fun Register(
             onValueChange = { password = it },
             label = {
                 Text(
-                    text = "Password"
+                    text = stringResource(id = R.string.password)
                 )
             },
             keyboardOptions = KeyboardOptions(
@@ -253,7 +253,7 @@ fun Register(
                 .fillMaxWidth()
         ) {
             Text(
-                text = "Register Here",
+                text = stringResource(id = R.string.register),
                 fontWeight = FontWeight.Bold,
                 fontSize = 20.sp,
                 modifier = Modifier
@@ -270,7 +270,7 @@ fun Register(
             }
         ) {
             Text(
-                text = "Already register? Login Here",
+                text = stringResource(id = R.string.current_user),
                 fontSize = 16.sp
             )
         }

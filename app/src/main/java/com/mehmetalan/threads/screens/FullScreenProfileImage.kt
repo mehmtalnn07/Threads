@@ -17,7 +17,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -33,12 +32,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
+import com.mehmetalan.threads.R
 
 @Composable
 fun FullScreenProfileImage(
@@ -47,9 +48,8 @@ fun FullScreenProfileImage(
 ) {
 
     val currentUser = FirebaseAuth.getInstance().currentUser
-    val userId = currentUser?.uid // Eğer kullanıcı oturum açmışsa `uid`
+    val userId = currentUser?.uid
 
-    // Eğer kullanıcı oturum açmamışsa uygun bir işlem yapın
     if (userId == null) {
         Text("Kullanıcı oturum açmamış!")
         return
@@ -58,27 +58,22 @@ fun FullScreenProfileImage(
     var isDialogOpen by remember { mutableStateOf(false) }
     var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
 
-    // Firebase referansları
-    val storage = FirebaseStorage.getInstance() // Firebase Storage referansı
-    val database = FirebaseDatabase.getInstance() // Firebase Realtime Database referansı
-    val userDatabaseRef = database.getReference("users/$userId") // İlgili kullanıcıya özel referans
+    val storage = FirebaseStorage.getInstance()
+    val database = FirebaseDatabase.getInstance()
+    val userDatabaseRef = database.getReference("users/$userId")
 
-    // Galeriden fotoğraf seçmek için ActivityResultLauncher
     val galleryLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
         if (uri != null) {
             selectedImageUri = uri
 
-            // Firebase Storage'a fotoğraf yükleme
             val storageRef = storage.reference.child("users/${userId}/${uri.lastPathSegment}")
             storageRef.putFile(uri).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    // İndirme URL'sini al
                     storageRef.downloadUrl.addOnCompleteListener { downloadTask ->
                         if (downloadTask.isSuccessful) {
                             val downloadUrl = downloadTask.result
-                            // Realtime Database'deki `imageUrl`'i güncelle
                             userDatabaseRef.child("imageUrl").setValue(downloadUrl.toString())
                         }
                     }
@@ -100,7 +95,7 @@ fun FullScreenProfileImage(
         ) {
             Image(
                 painter = rememberAsyncImagePainter(
-                    model = selectedImageUri ?: imageUrl // Seçilen resim veya mevcut resim
+                    model = selectedImageUri ?: imageUrl
                 ),
                 contentDescription = "Full screen image",
                 modifier = Modifier
@@ -135,45 +130,43 @@ fun FullScreenProfileImage(
                     .padding(bottom = 20.dp)
             ) {
                 Text(
-                    text = "Düzenle"
+                    text = stringResource(id = R.string.edit)
                 )
             }
             if (isDialogOpen) {
                 Box(
                     modifier = Modifier
-                        .fillMaxSize() // Dialog'un tam genişliğe yayılması için
-                        .background(Color(0x80000000)) // Yarı saydam arka plan için
-                        .clickable { isDialogOpen = false }, // Ekrana tıklayınca kapat
-                    contentAlignment = Alignment.Center // İçeriği ortala
+                        .fillMaxSize()
+                        .background(Color(0x80000000))
+                        .clickable { isDialogOpen = false },
+                    contentAlignment = Alignment.Center
                 ) {
                     Box(
                         modifier = Modifier
-                            .fillMaxWidth() // Tam genişlik
-                            .padding(24.dp) // Kenarlardan boşluk
-                            .clip(RoundedCornerShape(16.dp)) // Yuvarlatılmış köşeler
-                            .background(Color.White), // Beyaz arka plan
+                            .fillMaxWidth()
+                            .padding(24.dp)
+                            .clip(RoundedCornerShape(16.dp))
+                            .background(Color.White),
                         contentAlignment = Alignment.Center
                     ) {
                         Column {
                             Text(
-                                "Fotoğraf Çek",
+                                text = stringResource(id = R.string.take_photo),
                                 modifier = Modifier
                                     .clickable {
-                                        // Fotoğraf çekme işlemi
                                         isDialogOpen = false
                                     }
-                                    .padding(16.dp) // Boşluklar
+                                    .padding(16.dp)
                             )
-                            Divider() // Bölücü çizgi
+                            Divider()
                             Text(
-                                "Mevcut Fotoğraflardan Seç",
+                                text = stringResource(id = R.string.choose_photo),
                                 modifier = Modifier
                                     .clickable {
-                                        // Mevcut fotoğrafları seçmek için
                                         galleryLauncher.launch("image/*")
                                         isDialogOpen = false
                                     }
-                                    .padding(16.dp) // Boşluklar
+                                    .padding(16.dp)
                             )
                         }
                     }

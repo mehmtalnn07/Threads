@@ -21,7 +21,6 @@ import androidx.navigation.NavHostController
 import coil.compose.rememberAsyncImagePainter
 import com.mehmetalan.threads.model.UserModel
 import com.mehmetalan.threads.navigation.Routes
-import okhttp3.Route
 
 @Composable
 fun UserItem(

@@ -1,13 +1,12 @@
 package com.mehmetalan.threads.navigation
 
-import android.util.Log
+
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.google.android.play.integrity.internal.al
 import com.mehmetalan.threads.screens.AddThreads
 import com.mehmetalan.threads.screens.BottomNav
 import com.mehmetalan.threads.screens.FollowersScreen
